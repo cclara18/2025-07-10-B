@@ -8,7 +8,7 @@ class View(ft.UserControl):
         super().__init__()
         # page stuff
         self._page = page
-        self._page.title = "Esame del 10/07/2025 - Turno A"
+        self._page.title = "Esame del 10/07/2025 - Turno B"
         self._page.horizontal_alignment = 'CENTER'
         self._page.theme_mode = ft.ThemeMode.LIGHT
         self._page.bgcolor = "#ebf4f4"
@@ -25,7 +25,7 @@ class View(ft.UserControl):
 
     def load_interface(self):
         # title
-        self._title = ft.Text("Esame del 10/07/2025 - Turno A", color="green", size=24)
+        self._title = ft.Text("Esame del 10/07/2025 - Turno B", color="green", size=24)
         self._page.controls.append(self._title)
 
         self._ddcategory = ft.Dropdown(label="Category", width=200)
@@ -67,8 +67,7 @@ class View(ft.UserControl):
         self._btnCercaCammino = ft.ElevatedButton(text="Cerca ",
                                                   on_click=self._controller.handleCercaCammino, width=120)
 
-        row2 = ft.Row([self._txtInLun, self._ddProdStart, self._ddProdEnd, self._btnCercaCammino],
-                      alignment=ft.MainAxisAlignment.CENTER)
+        row2 = ft.Row([self._txtInLun, self._ddProdStart, self._ddProdEnd, self._btnCercaCammino], alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row2)
 
         self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=False)
