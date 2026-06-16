@@ -3,6 +3,10 @@ from datetime import datetime
 import flet as ft
 
 
+
+from database.DAO import DAO
+
+
 class View(ft.UserControl):
     def __init__(self, page: ft.Page):
         super().__init__()
@@ -28,7 +32,8 @@ class View(ft.UserControl):
         self._title = ft.Text("Esame del 10/07/2025 - Turno B", color="green", size=24)
         self._page.controls.append(self._title)
 
-        self._ddcategory = ft.Dropdown(label="Category", width=200)
+        categorie=DAO.getCategories()
+        self._ddcategory = ft.Dropdown(label="Category", width=200, options=[ft.dropdown.Option(c["category_name"])for c in categorie])
 
         self._dp1 = ft.DatePicker(
             on_change=lambda e: print(f"Giorno selezionato: {self._dp1.value}"),
@@ -61,7 +66,8 @@ class View(ft.UserControl):
         self._page.controls.append(row1)
 
         self._txtInLun = ft.TextField(label="Lunghezza cammino", width=120)
-        self._ddProdStart = ft.Dropdown(label="Start product", width=350)
+
+        self._ddProdStart = ft.Dropdown(label="Start product", width=350, )
         self._ddProdEnd = ft.Dropdown(label="End product", width=350)
 
         self._btnCercaCammino = ft.ElevatedButton(text="Cerca ",
